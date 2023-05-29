@@ -30,20 +30,19 @@
         {
             button1 = new Button();
             TextBox_Code = new RichTextBox();
-            label2 = new Label();
+            Label_Language = new Label();
             TextBox_SnippetShortcut = new TextBox();
-            label3 = new Label();
+            Label_SnippetName = new Label();
             TextBox_SnippetName = new TextBox();
             ComboBox_Language = new ComboBox();
-            label4 = new Label();
-            label5 = new Label();
-            checkBox1 = new CheckBox();
+            Label_SnippetShortcut = new Label();
+            Label_Code = new Label();
             button4 = new Button();
             menuStrip1 = new MenuStrip();
+            addUsingImportToolStripMenuItem = new ToolStripMenuItem();
             authorNameToolStripMenuItem = new ToolStripMenuItem();
             button5 = new Button();
             button6 = new Button();
-            addUsingImportToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,14 +64,15 @@
             TextBox_Code.TabIndex = 2;
             TextBox_Code.Text = "";
             // 
-            // label2
+            // Label_Language
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 40);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Language";
+            Label_Language.AutoSize = true;
+            Label_Language.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Language.Location = new Point(12, 40);
+            Label_Language.Name = "Label_Language";
+            Label_Language.Size = new Size(60, 15);
+            Label_Language.TabIndex = 5;
+            Label_Language.Text = "Language";
             // 
             // TextBox_SnippetShortcut
             // 
@@ -81,14 +81,15 @@
             TextBox_SnippetShortcut.Size = new Size(240, 23);
             TextBox_SnippetShortcut.TabIndex = 1;
             // 
-            // label3
+            // Label_SnippetName
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 76);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Snippet Name *";
+            Label_SnippetName.AutoSize = true;
+            Label_SnippetName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_SnippetName.Location = new Point(12, 76);
+            Label_SnippetName.Name = "Label_SnippetName";
+            Label_SnippetName.Size = new Size(86, 15);
+            Label_SnippetName.TabIndex = 0;
+            Label_SnippetName.Text = "Snippet Name";
             // 
             // TextBox_SnippetName
             // 
@@ -100,39 +101,31 @@
             // ComboBox_Language
             // 
             ComboBox_Language.FormattingEnabled = true;
-            ComboBox_Language.Items.AddRange(new object[] { "csharp", "cpp" });
+            ComboBox_Language.Items.AddRange(new object[] { "csharp", "cpp", "JavaScript", "TypeScript", "VB", "css", "html", "XML", "Python" });
             ComboBox_Language.Location = new Point(131, 40);
             ComboBox_Language.Name = "ComboBox_Language";
             ComboBox_Language.Size = new Size(242, 23);
             ComboBox_Language.TabIndex = 5;
             // 
-            // label4
+            // Label_SnippetShortcut
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(12, 116);
-            label4.Name = "label4";
-            label4.Size = new Size(103, 15);
-            label4.TabIndex = 9;
-            label4.Text = "Snippet Shortcut *";
+            Label_SnippetShortcut.AutoSize = true;
+            Label_SnippetShortcut.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_SnippetShortcut.Location = new Point(12, 116);
+            Label_SnippetShortcut.Name = "Label_SnippetShortcut";
+            Label_SnippetShortcut.Size = new Size(102, 15);
+            Label_SnippetShortcut.TabIndex = 9;
+            Label_SnippetShortcut.Text = "Snippet Shortcut";
             // 
-            // label5
+            // Label_Code
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 156);
-            label5.Name = "label5";
-            label5.Size = new Size(43, 15);
-            label5.TabIndex = 10;
-            label5.Text = "Code *";
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(12, 282);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(103, 19);
-            checkBox1.TabIndex = 3;
-            checkBox1.Text = "Sorround With";
-            checkBox1.UseVisualStyleBackColor = true;
+            Label_Code.AutoSize = true;
+            Label_Code.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Code.Location = new Point(12, 156);
+            Label_Code.Name = "Label_Code";
+            Label_Code.Size = new Size(35, 15);
+            Label_Code.TabIndex = 10;
+            Label_Code.Text = "Code";
             // 
             // button4
             // 
@@ -146,17 +139,26 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = Color.NavajoWhite;
+            menuStrip1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.Items.AddRange(new ToolStripItem[] { addUsingImportToolStripMenuItem, authorNameToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(438, 24);
+            menuStrip1.Size = new Size(401, 24);
             menuStrip1.TabIndex = 20;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // addUsingImportToolStripMenuItem
+            // 
+            addUsingImportToolStripMenuItem.Name = "addUsingImportToolStripMenuItem";
+            addUsingImportToolStripMenuItem.Size = new Size(119, 20);
+            addUsingImportToolStripMenuItem.Text = "Add Using/Import";
+            addUsingImportToolStripMenuItem.Click += UsingImportToolStripMenuItem_Click;
             // 
             // authorNameToolStripMenuItem
             // 
             authorNameToolStripMenuItem.Name = "authorNameToolStripMenuItem";
-            authorNameToolStripMenuItem.Size = new Size(74, 20);
+            authorNameToolStripMenuItem.Size = new Size(79, 20);
             authorNameToolStripMenuItem.Text = "Extra Infos";
             authorNameToolStripMenuItem.Click += ExtrasToolStripMenuItem_Click;
             // 
@@ -174,35 +176,27 @@
             // 
             button6.Location = new Point(12, 252);
             button6.Name = "button6";
-            button6.Size = new Size(90, 23);
+            button6.Size = new Size(90, 41);
             button6.TabIndex = 22;
-            button6.Text = "Add Field";
+            button6.Text = "Add Declaration";
             button6.UseVisualStyleBackColor = true;
-            button6.Click += Button_AddField_Click;
-            // 
-            // addUsingImportToolStripMenuItem
-            // 
-            addUsingImportToolStripMenuItem.Name = "addUsingImportToolStripMenuItem";
-            addUsingImportToolStripMenuItem.Size = new Size(115, 20);
-            addUsingImportToolStripMenuItem.Text = "Add Using/Import";
-            addUsingImportToolStripMenuItem.Click += UsingImportToolStripMenuItem_Click;
+            button6.Click += Button_AddDecleration_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(438, 459);
+            BackColor = Color.DarkOrange;
+            ClientSize = new Size(401, 392);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(checkBox1);
-            Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(Label_Code);
+            Controls.Add(Label_SnippetShortcut);
             Controls.Add(ComboBox_Language);
-            Controls.Add(label3);
+            Controls.Add(Label_SnippetName);
             Controls.Add(TextBox_SnippetName);
-            Controls.Add(label2);
+            Controls.Add(Label_Language);
             Controls.Add(TextBox_SnippetShortcut);
             Controls.Add(TextBox_Code);
             Controls.Add(button1);
@@ -222,14 +216,13 @@
 
         private Button button1;
         private RichTextBox TextBox_Code;
-        private Label label2;
+        private Label Label_Language;
         private TextBox TextBox_SnippetShortcut;
-        private Label label3;
+        private Label Label_SnippetName;
         private TextBox TextBox_SnippetName;
         private ComboBox ComboBox_Language;
-        private Label label4;
-        private Label label5;
-        private CheckBox checkBox1;
+        private Label Label_SnippetShortcut;
+        private Label Label_Code;
         private Button button4;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem authorNameToolStripMenuItem;

@@ -138,6 +138,8 @@
             Controls.Add(Button_ToLeft);
             Controls.Add(Button_ToRight);
             Controls.Add(ListBox1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "UsingsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UsingsForm";

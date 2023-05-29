@@ -21,7 +21,7 @@ namespace SnippetMaker
             try
             {
                 // Create a dictionary to store the file paths and corresponding JSON strings
-                Dictionary<string, string> saves = new Dictionary<string, string>();
+                Dictionary<string, string> saves = new();
 
                 // Add string dictionary
                 saves.Add(_saveInfoFilePath, SerializeDictionary(_stringDictionary));
@@ -33,7 +33,7 @@ namespace SnippetMaker
                 foreach (KeyValuePair<string, string> save in saves)
                 {
                     // Open a StreamWriter using the save file path
-                    using (StreamWriter writer = new StreamWriter(save.Key))
+                    using (StreamWriter writer = new(save.Key))
                     {
                         // Write the JSON string to the file
                         writer.Write(save.Value);

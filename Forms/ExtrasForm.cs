@@ -15,6 +15,9 @@
             //Loads the data.
             TextBox_AuthorName.Text = SaveLoad.LoadString(_authorNameTag);
             TextBox_HelpUrl.Text = SaveLoad.LoadString(_helpUrlTag);
+
+            //Resets the data description.
+            TextBox_Description.Text = SnippetGenerator.Description;
         }
 
         private void Button_Confirm_Click(object sender, EventArgs e)
@@ -25,6 +28,9 @@
 
             //Saves the data to file.
             SaveLoad.Save();
+
+            //Sets description.
+            SnippetGenerator.Description = TextBox_Description.Text;
 
             // Close the form
             Close();

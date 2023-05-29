@@ -2,77 +2,185 @@
 
 namespace SnippetMaker
 {
-    internal class SnippetGenerator
+    public static class SnippetGenerator
     {
-        private readonly string _language;
+        private static readonly StringBuilder stringBuilder = new();
 
         public static string Description { get; set; } = "";
+        public static string Language { get; set; } = "";
+        public static bool IsSurroundWith { get; set; } = false;
         public static List<string> UsingsList { get; private set; } = new();
+        public static List<Declaration> DeclarationList { get; private set; } = new();
 
-        public SnippetGenerator(string language)
+        public static void Reset()
         {
-            _language = language;
+            // Reset the Description, Language and IsSurroundWith
+            Description = "";
+            Language = "";
+            IsSurroundWith = false;
+
+            // Clear the UsingsList and DeclarationList
+            UsingsList.Clear();
+            DeclarationList.Clear();
+
+            // Clear the stringBuilder
+            stringBuilder.Clear();
         }
 
-        // Generate the code snippet
-        public string Generate(string snippetName, string snippetShortcut, string[] imports, string code, string description, bool isSurroundWith)
+        public static void Generate(string snippetName, string snippetShortcut, string code)
         {
-            // Create a new StringBuilder to hold the result
-            StringBuilder sb = new();
+            string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string snippetsDirectory = Path.Combine(documentsDirectory, "Visual Studio 2022", "Code Snippets");
+
+            // Show save file dialog to choose the location to save the snippet file
+            SaveFileDialog saveFileDialog = new()
+            {
+                FileName = $"{snippetName}.snippet",
+                Filter = "Snippet Files (*.snippet)|*.snippet",
+                Title = "Save Snippet File",
+                InitialDirectory = snippetsDirectory
+            };
+
+            // User canceled the save operation
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            // Update the snippet file path with the chosen location
+            string snippetFilePath = saveFileDialog.FileName;
 
             // Add the XML header and CodeSnippets element
-            sb.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n");
-            sb.Append("<CodeSnippets xmlns=\"http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet\">\n");
+            stringBuilder.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n");
+            stringBuilder.Append("<CodeSnippets xmlns=\"http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet\">\n");
 
             // Add the CodeSnippet element and Header element
-            sb.Append("<CodeSnippet Format=\"1.0.0\">\n");
-            sb.Append("<Header>\n");
+            stringBuilder.Append("<CodeSnippet Format=\"1.0.0\">\n");
+            HeaderHandle(snippetName, snippetShortcut);
 
-            // Add the SnippetTypes element
-            sb.Append("<SnippetTypes>\n");
-            sb.Append("<SnippetType>Expansion</SnippetType>\n");
+            // Open the Snippet element and Imports element
+            stringBuilder.Append("<Snippet>\n");
 
-            // Add SurroundsWith snippet type if isSurroundWith is true
-            if (isSurroundWith)
+            // Handle import
+            ImportHandle();
+
+            // Handle declaration
+            DeclarationHandle();
+
+            // Handle code
+            CodeHandle(code);
+
+            // Close the Snippet element and Imports element
+            stringBuilder.Append("</Snippet>\n");
+            stringBuilder.Append("</CodeSnippet>\n");
+            stringBuilder.Append("</CodeSnippets>");
+
+            // Write the snippet code to a file.
+            File.WriteAllText(snippetFilePath, stringBuilder.ToString());
+
+            //Resets the generator.
+            Reset();
+        }
+
+        private static void HeaderHandle(string snippetName, string snippetShortcut)
+        {
+            // Open the "Header" element
+            stringBuilder.Append("<Header>\n");
+
+            // Open the "SnippetTypes" element
+            stringBuilder.Append("<SnippetTypes>\n");
+
+            // Handle expansion
+            stringBuilder.Append(TagLineHandle("Expansion", "SnippetType"));
+
+            // Add "SurroundsWith" snippet type if IsSurroundWith is true
+            if (IsSurroundWith)
             {
-                sb.Append("<SnippetType>SurroundsWith</SnippetType>\n");
+                // Handle surround with
+                stringBuilder.Append(TagLineHandle("SurroundsWith", "SnippetType"));
             }
 
-            //Close snippet types element.
-            sb.Append("</SnippetTypes>\n");
+            // Close the "SnippetTypes" element
+            stringBuilder.Append("</SnippetTypes>\n");
 
-            // Add the Title, Author, Description, HelpUrl, and Shortcut elements
-            sb.Append($"<Title>{snippetName}</Title>\n");
-            sb.Append($"<Author>{SaveLoad.LoadString("AuthorName")}</Author>\n");
-            sb.Append($"<Description>{description}</Description>\n");
-            //sb.Append($"<HelpUrl>{helpUrl}</HelpUrl>\n");
-            sb.Append($"<Shortcut>{snippetShortcut}</Shortcut>\n");
+            // Add the "Title", "Author", "Description", "HelpUrl", and "Shortcut" elements
+            stringBuilder.Append(TagLineHandle(snippetName, "Title"));
+            stringBuilder.Append(TagLineHandle(SaveLoad.LoadString("AuthorName"), "Author"));
+            stringBuilder.Append(TagLineHandle(Description, "Description"));
+            stringBuilder.Append(TagLineHandle(SaveLoad.LoadString("HelpUrl"), "HelpUrl"));
+            stringBuilder.Append(TagLineHandle(snippetShortcut, "Shortcut"));
 
-            // Close the Header element
-            sb.Append("</Header>\n");
+            // Close the "Header" element
+            stringBuilder.Append("</Header>\n");
+        }
 
-            // Add the Snippet element and Imports element
-            sb.Append("<Snippet>\n");
-            sb.Append("<Imports>\n");
-
-            // Add each import as a separate Namespace element
-            foreach (string import in imports)
+        private static void ImportHandle()
+        {
+            if (UsingsList.Count != 0)
             {
-                sb.Append("<Import>\n" + $"<Namespace>{import}</Namespace>\n" + "</Import>\n");
+                // Open the "Imports" element
+                stringBuilder.Append("<Imports>\n");
+
+                // Add each import as a separate "Namespace" element
+                foreach (string import in UsingsList)
+                {
+                    // Open the "Import" element
+                    stringBuilder.Append("<Import>\n");
+
+                    // Append the "Namespace" element with the import value
+                    stringBuilder.Append(TagLineHandle(import, "Namespace"));
+
+                    // Close the "Import" element
+                    stringBuilder.Append("</Import>\n");
+                }
+
+                // Close the "Imports" element
+                stringBuilder.Append("</Imports>\n");
             }
+        }
 
-            //Close the imports elements
-            sb.Append("</Imports>\n");
+        private static void DeclarationHandle()
+        {
+            if (DeclarationList.Count != 0)
+            {
+                // Append the "Declarations" start tag
+                stringBuilder.Append("<Declarations>");
 
-            //Add the Code element and CDATA section for the code
-            sb.Append($"<Code Language=\"{_language}\" Delimiter=\"$\">\n");
-            sb.Append($"<![CDATA[{code.TrimEnd(null)}]]>\n");
+                foreach (Declaration declaration in DeclarationList)
+                {
+                    // Append the "<Literal Editable="true">" start tag
+                    stringBuilder.Append("<Literal Editable=\"true\">");
 
-            //Close the remaining elements
-            sb.Append("</Code>\n" + "</Snippet>\n" + "</CodeSnippet>\n" + "</CodeSnippets>");
+                    // Append the tag lines for each property of the Declaration object
+                    stringBuilder.Append(TagLineHandle(declaration.ID, "ID"));
+                    stringBuilder.Append(TagLineHandle(declaration.ToolTip, "ToolTip"));
+                    stringBuilder.Append(TagLineHandle(declaration.Default, "Default"));
+                    stringBuilder.Append(TagLineHandle(declaration.Function, "Function"));
 
-            //Convert the StringBuilder to a string and return it
-            return sb.ToString();
+                    // Append the closing tag for the "<Literal>" element
+                    stringBuilder.Append("</Literal>");
+                }
+
+                // Append the closing tag for the "Declarations" element
+                stringBuilder.Append("</Declarations>");
+            }
+        }
+
+        private static void CodeHandle(string code)
+        {
+            // Add the "Code" element and CDATA section for the code
+            stringBuilder.Append($"<Code Language=\"{Language}\" Delimiter=\"$\">\n");
+
+            // Append the code within a CDATA section, trimming any trailing whitespace
+            stringBuilder.Append($"<![CDATA[{code.TrimEnd(null)}]]>\n");
+
+            // Close the "Code" element
+            stringBuilder.Append("</Code>\n");
+        }
+
+        private static string TagLineHandle(string word, string tag)
+        {
+            return $"<{tag}>{word}</{tag}>\n";
         }
     }
 }

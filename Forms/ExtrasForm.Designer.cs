@@ -109,6 +109,7 @@
             Controls.Add(TextBox_AuthorName);
             Controls.Add(label1);
             MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ExtrasForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Extras";
