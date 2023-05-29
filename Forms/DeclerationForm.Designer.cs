@@ -34,9 +34,9 @@
             Label_ToolTip = new Label();
             TextBox_Default = new TextBox();
             Label_Default = new Label();
-            TextBox_Function = new TextBox();
             Label_Function = new Label();
             Button_Confirm = new Button();
+            ComboBox_Function = new ComboBox();
             SuspendLayout();
             // 
             // Label_ID
@@ -87,13 +87,6 @@
             Label_Default.TabIndex = 4;
             Label_Default.Text = "Default";
             // 
-            // TextBox_Function
-            // 
-            TextBox_Function.Location = new Point(75, 130);
-            TextBox_Function.Name = "TextBox_Function";
-            TextBox_Function.Size = new Size(100, 23);
-            TextBox_Function.TabIndex = 7;
-            // 
             // Label_Function
             // 
             Label_Function.AutoSize = true;
@@ -113,13 +106,22 @@
             Button_Confirm.UseVisualStyleBackColor = true;
             Button_Confirm.Click += Button_Confirm_Click;
             // 
+            // ComboBox_Function
+            // 
+            ComboBox_Function.FormattingEnabled = true;
+            ComboBox_Function.Items.AddRange(new object[] { "ClassName()" });
+            ComboBox_Function.Location = new Point(75, 127);
+            ComboBox_Function.Name = "ComboBox_Function";
+            ComboBox_Function.Size = new Size(100, 23);
+            ComboBox_Function.TabIndex = 9;
+            // 
             // DeclerationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(221, 208);
+            ClientSize = new Size(208, 208);
+            Controls.Add(ComboBox_Function);
             Controls.Add(Button_Confirm);
-            Controls.Add(TextBox_Function);
             Controls.Add(Label_Function);
             Controls.Add(TextBox_Default);
             Controls.Add(Label_Default);
@@ -144,8 +146,8 @@
         private Label Label_ToolTip;
         private TextBox TextBox_Default;
         private Label Label_Default;
-        private TextBox TextBox_Function;
         private Label Label_Function;
         private Button Button_Confirm;
+        private ComboBox ComboBox_Function;
     }
 }

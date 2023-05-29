@@ -9,28 +9,28 @@
 
         private void Button_Confirm_Click(object sender, EventArgs e)
         {
-            // Check if ID is empty
+            // Check if the ID is empty
             if (string.IsNullOrEmpty(TextBox_ID.Text))
             {
                 MessageBox.Show("ID cannot be empty.");
                 return;
             }
-            // Check if Default value is empty
-            else if (string.IsNullOrEmpty(TextBox_Default.Text))
-            {
-                MessageBox.Show("Default value cannot be empty.");
-                return;
-            }
             else
             {
                 // Create a new Declaration object with the entered values
-                Declaration declaration = new Declaration()
+                Declaration declaration = new()
                 {
                     ID = TextBox_ID.Text,
                     ToolTip = TextBox_ToolTip.Text,
                     Default = TextBox_Default.Text,
-                    Function = TextBox_Function.Text
+                    Function = ComboBox_Function.Text
                 };
+
+                // Set the default value to the ID if it is empty
+                if (string.IsNullOrEmpty(TextBox_Default.Text))
+                {
+                    declaration.Default = TextBox_ID.Text;
+                }
 
                 // Add the Declaration to the DeclarationList in SnippetGenerator class
                 SnippetGenerator.DeclarationList.Add(declaration);

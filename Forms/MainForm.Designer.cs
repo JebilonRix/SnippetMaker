@@ -48,6 +48,7 @@
             // 
             // button1
             // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(131, 343);
             button1.Name = "button1";
             button1.Size = new Size(241, 33);
@@ -101,7 +102,7 @@
             // ComboBox_Language
             // 
             ComboBox_Language.FormattingEnabled = true;
-            ComboBox_Language.Items.AddRange(new object[] { "csharp", "cpp", "JavaScript", "TypeScript", "VB", "css", "html", "XML", "Python" });
+            ComboBox_Language.Items.AddRange(new object[] { "csharp", "cpp", "VB", "JavaScript", "TypeScript", "Python", "XML", "css", "html" });
             ComboBox_Language.Location = new Point(131, 40);
             ComboBox_Language.Name = "ComboBox_Language";
             ComboBox_Language.Size = new Size(242, 23);
@@ -129,7 +130,8 @@
             // 
             // button4
             // 
-            button4.Location = new Point(12, 194);
+            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(12, 196);
             button4.Name = "button4";
             button4.Size = new Size(90, 23);
             button4.TabIndex = 19;
@@ -164,9 +166,10 @@
             // 
             // button5
             // 
-            button5.Location = new Point(12, 223);
+            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.Location = new Point(12, 225);
             button5.Name = "button5";
-            button5.Size = new Size(90, 23);
+            button5.Size = new Size(90, 38);
             button5.TabIndex = 21;
             button5.Text = "Add Sorround";
             button5.UseVisualStyleBackColor = true;
@@ -174,7 +177,8 @@
             // 
             // button6
             // 
-            button6.Location = new Point(12, 252);
+            button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.Location = new Point(12, 269);
             button6.Name = "button6";
             button6.Size = new Size(90, 41);
             button6.TabIndex = 22;
