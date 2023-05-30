@@ -41,6 +41,7 @@
             // 
             // Button_ToLeft
             // 
+            Button_ToLeft.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_ToLeft.Location = new Point(276, 66);
             Button_ToLeft.Name = "Button_ToLeft";
             Button_ToLeft.Size = new Size(40, 40);
@@ -51,6 +52,7 @@
             // 
             // Button_ToRight
             // 
+            Button_ToRight.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_ToRight.Location = new Point(276, 12);
             Button_ToRight.Name = "Button_ToRight";
             Button_ToRight.Size = new Size(40, 40);
@@ -79,6 +81,7 @@
             // 
             // Button_Confirm
             // 
+            Button_Confirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Confirm.Location = new Point(333, 142);
             Button_Confirm.Name = "Button_Confirm";
             Button_Confirm.Size = new Size(245, 32);
@@ -98,14 +101,16 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(12, 133);
             label1.Name = "label1";
-            label1.Size = new Size(130, 15);
+            label1.Size = new Size(136, 15);
             label1.TabIndex = 26;
             label1.Text = "Add New Using/Import";
             // 
             // Button_AddNewUsing
             // 
+            Button_AddNewUsing.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_AddNewUsing.Location = new Point(12, 180);
             Button_AddNewUsing.Name = "Button_AddNewUsing";
             Button_AddNewUsing.Size = new Size(75, 23);
@@ -116,6 +121,7 @@
             // 
             // Button_RemoveUsing
             // 
+            Button_RemoveUsing.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_RemoveUsing.Location = new Point(129, 180);
             Button_RemoveUsing.Name = "Button_RemoveUsing";
             Button_RemoveUsing.Size = new Size(75, 23);
@@ -128,6 +134,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkOrange;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(596, 215);
             Controls.Add(Button_RemoveUsing);
             Controls.Add(Button_AddNewUsing);
@@ -149,14 +157,14 @@
         }
 
         #endregion
+        private Button Button_AddNewUsing;
+        private Button Button_Confirm;
+        private Button Button_RemoveUsing;
         private Button Button_ToLeft;
         private Button Button_ToRight;
+        private Label label1;
         private ListBox ListBox1;
         private ListBox ListBox2;
-        private Button Button_Confirm;
         private TextBox TextBox_AddNew;
-        private Label label1;
-        private Button Button_AddNewUsing;
-        private Button Button_RemoveUsing;
     }
 }

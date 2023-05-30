@@ -42,9 +42,10 @@
             // Label_ID
             // 
             Label_ID.AutoSize = true;
+            Label_ID.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Label_ID.Location = new Point(15, 10);
             Label_ID.Name = "Label_ID";
-            Label_ID.Size = new Size(18, 15);
+            Label_ID.Size = new Size(20, 15);
             Label_ID.TabIndex = 0;
             Label_ID.Text = "ID";
             // 
@@ -65,9 +66,10 @@
             // Label_ToolTip
             // 
             Label_ToolTip.AutoSize = true;
+            Label_ToolTip.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Label_ToolTip.Location = new Point(15, 50);
             Label_ToolTip.Name = "Label_ToolTip";
-            Label_ToolTip.Size = new Size(45, 15);
+            Label_ToolTip.Size = new Size(47, 15);
             Label_ToolTip.TabIndex = 2;
             Label_ToolTip.Text = "ToolTip";
             // 
@@ -81,23 +83,26 @@
             // Label_Default
             // 
             Label_Default.AutoSize = true;
+            Label_Default.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Label_Default.Location = new Point(15, 90);
             Label_Default.Name = "Label_Default";
-            Label_Default.Size = new Size(45, 15);
+            Label_Default.Size = new Size(49, 15);
             Label_Default.TabIndex = 4;
             Label_Default.Text = "Default";
             // 
             // Label_Function
             // 
             Label_Function.AutoSize = true;
+            Label_Function.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Label_Function.Location = new Point(15, 130);
             Label_Function.Name = "Label_Function";
-            Label_Function.Size = new Size(54, 15);
+            Label_Function.Size = new Size(55, 15);
             Label_Function.TabIndex = 6;
             Label_Function.Text = "Function";
             // 
             // Button_Confirm
             // 
+            Button_Confirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Confirm.Location = new Point(75, 164);
             Button_Confirm.Name = "Button_Confirm";
             Button_Confirm.Size = new Size(100, 23);
@@ -119,6 +124,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkOrange;
             ClientSize = new Size(208, 208);
             Controls.Add(ComboBox_Function);
             Controls.Add(Button_Confirm);
@@ -140,14 +146,14 @@
 
         #endregion
 
-        private Label Label_ID;
-        private TextBox TextBox_ID;
-        private TextBox TextBox_ToolTip;
-        private Label Label_ToolTip;
-        private TextBox TextBox_Default;
-        private Label Label_Default;
-        private Label Label_Function;
         private Button Button_Confirm;
         private ComboBox ComboBox_Function;
+        private Label Label_Default;
+        private Label Label_Function;
+        private Label Label_ID;
+        private Label Label_ToolTip;
+        private TextBox TextBox_Default;
+        private TextBox TextBox_ID;
+        private TextBox TextBox_ToolTip;
     }
 }

@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            Label_AuthorName = new Label();
             TextBox_AuthorName = new TextBox();
             TextBox_HelpUrl = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
+            Label_HelpUrl = new Label();
+            Label_Description = new Label();
             Button_Confirm = new Button();
             TextBox_Description = new RichTextBox();
             SuspendLayout();
             // 
-            // label1
+            // Label_AuthorName
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(10, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Author Name";
+            Label_AuthorName.AutoSize = true;
+            Label_AuthorName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_AuthorName.Location = new Point(10, 20);
+            Label_AuthorName.Name = "Label_AuthorName";
+            Label_AuthorName.Size = new Size(82, 15);
+            Label_AuthorName.TabIndex = 0;
+            Label_AuthorName.Text = "Author Name";
             // 
             // TextBox_AuthorName
             // 
@@ -60,26 +61,29 @@
             TextBox_HelpUrl.Size = new Size(272, 23);
             TextBox_HelpUrl.TabIndex = 3;
             // 
-            // label2
+            // Label_HelpUrl
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 60);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Help Url";
+            Label_HelpUrl.AutoSize = true;
+            Label_HelpUrl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_HelpUrl.Location = new Point(10, 60);
+            Label_HelpUrl.Name = "Label_HelpUrl";
+            Label_HelpUrl.Size = new Size(53, 15);
+            Label_HelpUrl.TabIndex = 2;
+            Label_HelpUrl.Text = "Help Url";
             // 
-            // label3
+            // Label_Description
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(10, 100);
-            label3.Name = "label3";
-            label3.Size = new Size(67, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Description";
+            Label_Description.AutoSize = true;
+            Label_Description.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_Description.Location = new Point(10, 100);
+            Label_Description.Name = "Label_Description";
+            Label_Description.Size = new Size(71, 15);
+            Label_Description.TabIndex = 4;
+            Label_Description.Text = "Description";
             // 
             // Button_Confirm
             // 
+            Button_Confirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Button_Confirm.Location = new Point(100, 195);
             Button_Confirm.Name = "Button_Confirm";
             Button_Confirm.Size = new Size(272, 23);
@@ -100,14 +104,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkOrange;
             ClientSize = new Size(418, 239);
             Controls.Add(TextBox_Description);
             Controls.Add(Button_Confirm);
-            Controls.Add(label3);
+            Controls.Add(Label_Description);
             Controls.Add(TextBox_HelpUrl);
-            Controls.Add(label2);
+            Controls.Add(Label_HelpUrl);
             Controls.Add(TextBox_AuthorName);
-            Controls.Add(label1);
+            Controls.Add(Label_AuthorName);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ExtrasForm";
@@ -120,13 +125,12 @@
 
         #endregion
 
-        private Label label1;
+        private Button Button_Confirm;
+        private Label Label_AuthorName;
+        private Label Label_HelpUrl;
+        private Label Label_Description;
+        private RichTextBox TextBox_Description;
         private TextBox TextBox_AuthorName;
         private TextBox TextBox_HelpUrl;
-        private Label label2;
-        private TextBox textBox3;
-        private Label label3;
-        private Button Button_Confirm;
-        private RichTextBox TextBox_Description;
     }
 }

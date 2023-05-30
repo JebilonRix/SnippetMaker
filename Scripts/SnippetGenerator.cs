@@ -29,6 +29,8 @@ namespace SnippetMaker
 
         public static void Generate(string snippetName, string snippetShortcut, string code)
         {
+            code = CodeTextHandle(code);
+
             string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string snippetsDirectory = Path.Combine(documentsDirectory, "Visual Studio 2022", "Code Snippets");
 
@@ -78,8 +80,94 @@ namespace SnippetMaker
             // Write the snippet code to a file.
             File.WriteAllText(snippetFilePath, stringBuilder.ToString());
 
-            //Resets the generator.
+            // Resets the generator.
             Reset();
+        }
+
+        private static string CodeTextHandle(string code)
+        {
+            // Split the code string into an array of substrings using '$' as the delimiter
+            string[] splittedString = code.Split('$');
+
+            // Count the occurrences of "end" and "selected"
+            int endCount = 0;
+            int selectedCount = 0;
+
+            foreach (string item in splittedString)
+            {
+                if (item == "end")
+                {
+                    endCount++;
+                }
+                else if (item == "selected")
+                {
+                    selectedCount++;
+
+                    // Set the IsSurroundWith flag to true if "selected" is found
+                    IsSurroundWith = true;
+                }
+            }
+
+            // Remove all occurrences of "end" except the last one
+            if (endCount > 1)
+            {
+                List<string> modifiedStringList = new List<string>();
+
+                foreach (string item in splittedString)
+                {
+                    if (item == "end" && endCount > 1)
+                    {
+                        endCount--;
+
+                        // Skip this occurrence of "end" if there are more than one
+                        continue;
+                    }
+
+                    modifiedStringList.Add(item);
+                }
+
+                splittedString = modifiedStringList.ToArray();
+            }
+
+            // Remove all occurrences of "selected" except the last one
+            if (selectedCount > 1)
+            {
+                List<string> modifiedStringList = new List<string>();
+
+                foreach (string item in splittedString)
+                {
+                    if (item == "selected" && selectedCount > 1)
+                    {
+                        selectedCount--;
+
+                        // Skip this occurrence of "selected" if there are more than one
+                        continue;
+                    }
+
+                    modifiedStringList.Add(item);
+                }
+
+                splittedString = modifiedStringList.ToArray();
+            }
+
+            // Reconstruct the code string with modified occurrences of "end" and "selected"
+            string result = "";
+
+            foreach (string item in splittedString)
+            {
+                if (item == "end" || item == "selected")
+                {
+                    // Add '$' symbols to "end" and "selected" occurrences
+                    result += $"${item}$";
+                }
+                else
+                {
+                    // Add other substrings as they are
+                    result += item;
+                }
+            }
+
+            return result;
         }
 
         private static void HeaderHandle(string snippetName, string snippetShortcut)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            Button_Generate = new Button();
             TextBox_Code = new RichTextBox();
             Label_Language = new Label();
             TextBox_SnippetShortcut = new TextBox();
@@ -37,25 +37,25 @@
             ComboBox_Language = new ComboBox();
             Label_SnippetShortcut = new Label();
             Label_Code = new Label();
-            button4 = new Button();
-            menuStrip1 = new MenuStrip();
-            addUsingImportToolStripMenuItem = new ToolStripMenuItem();
-            authorNameToolStripMenuItem = new ToolStripMenuItem();
-            button5 = new Button();
-            button6 = new Button();
-            menuStrip1.SuspendLayout();
+            Button_AddEnd = new Button();
+            MenuStrip = new MenuStrip();
+            AddUsingImportToolStripMenuItem = new ToolStripMenuItem();
+            AuthorNameToolStripMenuItem = new ToolStripMenuItem();
+            Button_AddSorround = new Button();
+            Button_AddDecleration = new Button();
+            MenuStrip.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // Button_Generate
             // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(131, 343);
-            button1.Name = "button1";
-            button1.Size = new Size(241, 33);
-            button1.TabIndex = 9;
-            button1.Text = "Generate";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += Button_Generate_Click;
+            Button_Generate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_Generate.Location = new Point(131, 343);
+            Button_Generate.Name = "Button_Generate";
+            Button_Generate.Size = new Size(241, 33);
+            Button_Generate.TabIndex = 9;
+            Button_Generate.Text = "Generate";
+            Button_Generate.UseVisualStyleBackColor = true;
+            Button_Generate.Click += Button_Generate_Click;
             // 
             // TextBox_Code
             // 
@@ -102,7 +102,7 @@
             // ComboBox_Language
             // 
             ComboBox_Language.FormattingEnabled = true;
-            ComboBox_Language.Items.AddRange(new object[] { "csharp", "cpp", "VB", "JavaScript", "TypeScript", "Python", "XML", "css", "html" });
+            ComboBox_Language.Items.AddRange(new object[] { "C#", "C++", "Visual Basic", "JavaScript", "TypeScript", "Python", "XML", "CSS", "HTML" });
             ComboBox_Language.Location = new Point(131, 40);
             ComboBox_Language.Name = "ComboBox_Language";
             ComboBox_Language.Size = new Size(242, 23);
@@ -128,63 +128,63 @@
             Label_Code.TabIndex = 10;
             Label_Code.Text = "Code";
             // 
-            // button4
+            // Button_AddEnd
             // 
-            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(12, 196);
-            button4.Name = "button4";
-            button4.Size = new Size(90, 23);
-            button4.TabIndex = 19;
-            button4.Text = "Add End";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += Button_AddEnd_Click;
+            Button_AddEnd.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_AddEnd.Location = new Point(12, 196);
+            Button_AddEnd.Name = "Button_AddEnd";
+            Button_AddEnd.Size = new Size(90, 23);
+            Button_AddEnd.TabIndex = 19;
+            Button_AddEnd.Text = "Add End";
+            Button_AddEnd.UseVisualStyleBackColor = true;
+            Button_AddEnd.Click += Button_AddEnd_Click;
             // 
-            // menuStrip1
+            // MenuStrip
             // 
-            menuStrip1.BackColor = Color.NavajoWhite;
-            menuStrip1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { addUsingImportToolStripMenuItem, authorNameToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(401, 24);
-            menuStrip1.TabIndex = 20;
-            menuStrip1.Text = "menuStrip1";
+            MenuStrip.BackColor = Color.NavajoWhite;
+            MenuStrip.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuStrip.Items.AddRange(new ToolStripItem[] { AddUsingImportToolStripMenuItem, AuthorNameToolStripMenuItem });
+            MenuStrip.Location = new Point(0, 0);
+            MenuStrip.Name = "MenuStrip";
+            MenuStrip.Size = new Size(401, 24);
+            MenuStrip.TabIndex = 20;
+            MenuStrip.Text = "MenuStrip";
             // 
-            // addUsingImportToolStripMenuItem
+            // AddUsingImportToolStripMenuItem
             // 
-            addUsingImportToolStripMenuItem.Name = "addUsingImportToolStripMenuItem";
-            addUsingImportToolStripMenuItem.Size = new Size(119, 20);
-            addUsingImportToolStripMenuItem.Text = "Add Using/Import";
-            addUsingImportToolStripMenuItem.Click += UsingImportToolStripMenuItem_Click;
+            AddUsingImportToolStripMenuItem.Name = "AddUsingImportToolStripMenuItem";
+            AddUsingImportToolStripMenuItem.Size = new Size(119, 20);
+            AddUsingImportToolStripMenuItem.Text = "Add Using/Import";
+            AddUsingImportToolStripMenuItem.Click += UsingImportToolStripMenuItem_Click;
             // 
-            // authorNameToolStripMenuItem
+            // AuthorNameToolStripMenuItem
             // 
-            authorNameToolStripMenuItem.Name = "authorNameToolStripMenuItem";
-            authorNameToolStripMenuItem.Size = new Size(79, 20);
-            authorNameToolStripMenuItem.Text = "Extra Infos";
-            authorNameToolStripMenuItem.Click += ExtrasToolStripMenuItem_Click;
+            AuthorNameToolStripMenuItem.Name = "AuthorNameToolStripMenuItem";
+            AuthorNameToolStripMenuItem.Size = new Size(79, 20);
+            AuthorNameToolStripMenuItem.Text = "Extra Infos";
+            AuthorNameToolStripMenuItem.Click += ExtrasToolStripMenuItem_Click;
             // 
-            // button5
+            // Button_AddSorround
             // 
-            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.Location = new Point(12, 225);
-            button5.Name = "button5";
-            button5.Size = new Size(90, 38);
-            button5.TabIndex = 21;
-            button5.Text = "Add Sorround";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += Button_AddSelected_Click;
+            Button_AddSorround.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_AddSorround.Location = new Point(12, 225);
+            Button_AddSorround.Name = "Button_AddSorround";
+            Button_AddSorround.Size = new Size(90, 38);
+            Button_AddSorround.TabIndex = 21;
+            Button_AddSorround.Text = "Add Sorround";
+            Button_AddSorround.UseVisualStyleBackColor = true;
+            Button_AddSorround.Click += Button_AddSelected_Click;
             // 
-            // button6
+            // Button_AddDecleration
             // 
-            button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.Location = new Point(12, 269);
-            button6.Name = "button6";
-            button6.Size = new Size(90, 41);
-            button6.TabIndex = 22;
-            button6.Text = "Add Declaration";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += Button_AddDecleration_Click;
+            Button_AddDecleration.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Button_AddDecleration.Location = new Point(12, 269);
+            Button_AddDecleration.Name = "Button_AddDecleration";
+            Button_AddDecleration.Size = new Size(90, 41);
+            Button_AddDecleration.TabIndex = 22;
+            Button_AddDecleration.Text = "Add Declaration";
+            Button_AddDecleration.UseVisualStyleBackColor = true;
+            Button_AddDecleration.Click += Button_AddDecleration_Click;
             // 
             // MainForm
             // 
@@ -192,9 +192,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkOrange;
             ClientSize = new Size(401, 392);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(Button_AddDecleration);
+            Controls.Add(Button_AddSorround);
+            Controls.Add(Button_AddEnd);
             Controls.Add(Label_Code);
             Controls.Add(Label_SnippetShortcut);
             Controls.Add(ComboBox_Language);
@@ -203,35 +203,36 @@
             Controls.Add(Label_Language);
             Controls.Add(TextBox_SnippetShortcut);
             Controls.Add(TextBox_Code);
-            Controls.Add(button1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(Button_Generate);
+            Controls.Add(MenuStrip);
+            Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MainMenuStrip = MenuStrip;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
+            Text = "Snippet Generator";
             Load += MainForm_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            MenuStrip.ResumeLayout(false);
+            MenuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private RichTextBox TextBox_Code;
-        private Label Label_Language;
-        private TextBox TextBox_SnippetShortcut;
-        private Label Label_SnippetName;
-        private TextBox TextBox_SnippetName;
+        private Button Button_AddDecleration;
+        private Button Button_AddEnd;
+        private Button Button_AddSorround;
+        private Button Button_Generate;
         private ComboBox ComboBox_Language;
-        private Label Label_SnippetShortcut;
         private Label Label_Code;
-        private Button button4;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem authorNameToolStripMenuItem;
-        private Button button5;
-        private Button button6;
-        private ToolStripMenuItem addUsingImportToolStripMenuItem;
+        private Label Label_Language;
+        private Label Label_SnippetName;
+        private Label Label_SnippetShortcut;
+        private MenuStrip MenuStrip;
+        private RichTextBox TextBox_Code;
+        private TextBox TextBox_SnippetName;
+        private TextBox TextBox_SnippetShortcut;
+        private ToolStripMenuItem AddUsingImportToolStripMenuItem;
+        private ToolStripMenuItem AuthorNameToolStripMenuItem;
     }
 }

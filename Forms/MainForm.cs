@@ -13,18 +13,6 @@ namespace SnippetMaker
             InitializeComponent();
         }
 
-        public static void InsertText(string text)
-        {
-            // Get the current cursor position
-            int cursorPosition = CodeTextBox.SelectionStart;
-
-            // Insert the desired text at the cursor position
-            CodeTextBox.Text = CodeTextBox.Text.Insert(cursorPosition, text);
-
-            // Move the cursor position to the end of the inserted text
-            CodeTextBox.SelectionStart = cursorPosition + text.Length;
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Loads the data.
@@ -37,6 +25,8 @@ namespace SnippetMaker
             ComboBox_Language.SelectedIndex = 0;
         }
 
+        #region ToolStripMenuItem Methods
+
         private void UsingImportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UsingsForm usingsForm = new();
@@ -48,6 +38,10 @@ namespace SnippetMaker
             ExtrasForm extrasForm = new();
             extrasForm.Show();
         }
+
+        #endregion ToolStripMenuItem Methods
+
+        #region Buttons Methods
 
         private void Button_Generate_Click(object sender, EventArgs e)
         {
@@ -72,7 +66,7 @@ namespace SnippetMaker
             else
             {
                 // Create a new instance of the SnippetGenerator class.
-                SnippetGenerator.Language = new(ComboBox_Language.Text);
+                SnippetGenerator.Language = new(GetLanguage());
 
                 // Generate the snippet code using the SnippetGenerator class.
                 SnippetGenerator.Generate(TextBox_SnippetName.Text, TextBox_SnippetShortcut.Text, TextBox_Code.Text);
@@ -95,5 +89,40 @@ namespace SnippetMaker
             DeclerationForm declerationForm = new();
             declerationForm.Show();
         }
+
+        #endregion Buttons Methods
+
+        #region Other Methods
+
+        public static void InsertText(string text)
+        {
+            // Get the current cursor position
+            int cursorPosition = CodeTextBox.SelectionStart;
+
+            // Insert the desired text at the cursor position
+            CodeTextBox.Text = CodeTextBox.Text.Insert(cursorPosition, text);
+
+            // Move the cursor position to the end of the inserted text
+            CodeTextBox.SelectionStart = cursorPosition + text.Length;
+        }
+
+        private string GetLanguage()
+        {
+            return ComboBox_Language.Text switch
+            {
+                "C#" => "csharp",
+                "C++" => "cpp",
+                "Visual Basic" => "VB",
+                "JavaScript" => "JavaScript",
+                "TypeScript" => "TypeScript",
+                "Python" => "Python",
+                "XML" => "XML",
+                "CSS" => "css",
+                "HTML" => "html",
+                _ => "",
+            };
+        }
+
+        #endregion Other Methods
     }
 }
